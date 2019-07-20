@@ -21,16 +21,19 @@ const items = new Array(100).fill('').map(() => {
 const app = new express();
 
 app.get('/users', (req, res) => {
+  console.log('Users: ', users);
   res.json(users);
 });
 
 app.get('/users/:id/items', (req, res) => {
   const { id } = req.params;
-  const userTasks = items.filter(({ personId }) => personId === Number(id));
+  const userTasks = items.filter(({ userId }) => userId === Number(id));
+  console.log('Users Items: ', userTasks);
   res.json(userTasks);
 });
 
 app.get('/items/', (req, res) => {
+  console.log('Items: ', items);
   res.json(items);
 });
 
